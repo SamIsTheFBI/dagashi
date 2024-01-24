@@ -1,11 +1,6 @@
 import Head from "next/head";
-import Image from "next/image";
-import Link from "next/link";
-import { FaBox } from "react-icons/fa";
 import { Container, RootLayout } from "~/components";
-import CategoryCard from "~/components/category-card";
 import CategoryList from "~/components/category-list";
-import { Button } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
 import { Skeleton } from "~/components/ui/skeleton";
 import { useCategoryStore } from "~/store";
@@ -14,7 +9,7 @@ import { api } from "~/utils/api";
 
 const Home: NextPageWithLayout = () => {
   const categories = api.category.listAll.useQuery()
-  const { categoryName, setCategoryName } = useCategoryStore()
+  const { categoryName } = useCategoryStore()
 
   return (
     <>

@@ -1,7 +1,4 @@
-import { Category } from "@prisma/client";
-import { useCategoryStore } from "~/store";
-import Image from "next/image";
-import { Skeleton } from "../ui/skeleton";
+import { type Category } from "@prisma/client";
 import CategoryCard from "../category-card";
 
 interface CategoryListProps {
@@ -13,8 +10,8 @@ const CategoryList: React.FC<CategoryListProps> = ({ categories }) => {
     <div className="px-4 sm:px-6 lg:px-8">
       <div className="text-xl font-bold py-3">Categories</div>
       <div className="overflow-auto flex gap-3">
-        {categories?.map((cat) => (
-          <CategoryCard cat={cat} />
+        {categories?.map((cat: Category) => (
+          <CategoryCard cat={cat} key={cat.id} />
         ))}
       </div>
     </div>

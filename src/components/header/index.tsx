@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Container, ProfileButton } from "..";
+import { Container } from "..";
 import { routes } from "~/const";
 import { Button } from "../ui/button";
 import { IoSunnyOutline, IoMoonOutline, IoRestaurant } from "react-icons/io5";
@@ -10,8 +10,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "~/components/ui/dropdown-menu";
-import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
-import { BiMenuAltLeft } from "react-icons/bi";
+import { UserButton } from "@clerk/nextjs";
 
 export default function Header() {
   const { setTheme } = useTheme()
@@ -64,6 +63,9 @@ export default function Header() {
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
+            <div className="ml-3">
+              <UserButton afterSignOutUrl="/" />
+            </div>
           </div>
         </div>
       </Container>

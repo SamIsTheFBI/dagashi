@@ -1,7 +1,7 @@
 import { type NextPage } from "next";
 import { type AppProps } from "next/app";
 import { type ReactElement, type ReactNode } from "react";
-import { IconType } from "react-icons/lib";
+import { type IconType } from "react-icons/lib";
 
 type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode;

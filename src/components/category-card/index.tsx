@@ -1,10 +1,6 @@
 import Image from "next/image";
-import Link from "next/link";
-
-import { Card, CardContent, CardFooter } from "~/components/ui/card";
-
 import { Skeleton } from "../ui/skeleton";
-import { Category } from "@prisma/client";
+import { type Category } from "@prisma/client";
 import { useCategoryStore } from "~/store";
 
 interface CategoryCard {
@@ -34,7 +30,7 @@ const CategoryCard: React.FC<CategoryCard> = ({ cat }) => {
               <Skeleton className="size-16" />
             }
           </div>
-          <p className="">
+          <p>
             {cat?.name}
           </p>
         </div>

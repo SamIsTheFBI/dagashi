@@ -1,5 +1,6 @@
-import { IoFastFood, IoHome, IoPersonCircle } from "react-icons/io5";
+import { IoFastFood, IoHome } from "react-icons/io5";
 import { HiShoppingBag } from "react-icons/hi2";
+import { MdDashboard } from "react-icons/md";
 
 const routes = [
   {
@@ -18,9 +19,9 @@ const routes = [
     icon: HiShoppingBag,
   },
   {
-    href: "/profile",
-    label: "Profile",
-    icon: IoPersonCircle,
+    href: "/dashboard",
+    label: "Dashboard",
+    icon: MdDashboard,
   },
 ]
 
