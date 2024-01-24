@@ -12,6 +12,7 @@ import {
 } from "~/components/ui/dropdown-menu";
 import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
 import { BiMenuAltLeft } from "react-icons/bi";
+import Image from "next/image";
 
 export default function Header() {
   const { setTheme } = useTheme()
@@ -20,38 +21,16 @@ export default function Header() {
       <Container>
         <div className="relative px-3 sm:px-6 lg:px-8 flex h-11 items-center justify-between w-full">
           <div className="flex items-center">
-            <Sheet>
-              <SheetTrigger asChild>
-                <Button variant="link" className="md:hidden -ml-4">
-                  <BiMenuAltLeft className="h-6 w-6" />
-                </Button>
-              </SheetTrigger>
-              <SheetContent
-                side="left"
-              >
-                <div className="h-full flex flex-col justify-between">
-                  <nav className="flex flex-col gap-4 ml-4 mt-4">
-                    {routes.map((route: { href: string, label: string }, id: number) => (
-                      <Link
-                        key={id}
-                        href={route.href}
-                        className="text-lg font-medium transition-colors"
-                      >
-                        {route.label}
-                      </Link>
-                    ))}
-                  </nav>
-                  <Link href="/" className="ml-0">
-                    <h1 className="text-xl font-bold">
-                      Starters
-                    </h1>
-                  </Link>
-                </div>
-              </SheetContent>
-            </Sheet>
-            <Link href="/" className="ml-2 lg:ml-0">
+            <Link href="/" className="inline-flex items-center gap-3">
+              <Image
+                src="https://www.svgrepo.com/download/244394/french-fries.svg"
+                height={44}
+                width={44}
+                alt="logo"
+                className="size-11 "
+              />
               <h1 className="text-xl font-bold">
-                Starters
+                Dagashi
               </h1>
             </Link>
           </div>

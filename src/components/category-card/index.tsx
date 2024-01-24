@@ -3,35 +3,43 @@ import Link from "next/link";
 
 import { Card, CardContent, CardFooter } from "~/components/ui/card";
 
-import { type Category } from "~/types";
 import { Skeleton } from "../ui/skeleton";
+import { Category } from "@prisma/client";
+import { useCategoryStore } from "~/store";
 
 interface CategoryCard {
-  data: Category | null;
+  cat: Category | null;
 }
 
-const CategoryCard: React.FC<CategoryCard> = ({ data }) => {
+const CategoryCard: React.FC<CategoryCard> = ({ cat }) => {
+  const { setCategoryName } = useCategoryStore()
   return (
-    <Link href={`/categories/${data?.route}`} className="outline-0 focus:ring-2 hover:ring-2 ring-primary transition duration-300 rounded-lg">
-      <Card className="rounded-lg border-2">
-        <CardContent className="pt-4">
-          <div className="aspect-square relative bg-foreground/5 dark:bg-background rounded-lg">
-            {data?.imageUrl ? <Image
-              src={data.imageUrl}
-              alt=""
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              fill
-              className="aspect-square object-cover rounded-lg transition-all duration-300 hover:scale-105"
-            />
-              : <Skeleton className="w-full h-full" />
+    <div>
+      <input type="radio" id={cat?.name} name="hosting" value={cat?.name} className="hidden peer" onChange={(e) => setCategoryName(e.target.value)} required />
+      <label
+        htmlFor={cat?.name}
+        className="inline-flex items-center justify-between w-full p-2 text-primary bg-primary-foreground border border-secondary rounded-lg cursor-pointer dark:hover:text-secondary dark:border-secondary dark:peer-checked:text-secondary peer-checked:border-primary peer-checked:border-2 peer-checked:font-bold hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
+        <div className="flex flex-col justify-between items-center gap-2 p-3 rounded-lg">
+          <div className="size-16 rounded-lg overflow-hidden p-2">
+            {cat?.imageUrl
+              ?
+              <Image
+                src={cat.imageUrl}
+                alt={cat.name}
+                width={256}
+                height={256}
+                className="object-cover aspect-square"
+              />
+              :
+              <Skeleton className="size-16" />
             }
           </div>
-        </CardContent>
-        <CardFooter className="flex-col items-start">
-          <p className="font-semibold text-lg capitalize">{data?.name}</p>
-        </CardFooter>
-      </Card>
-    </Link>
+          <p className="">
+            {cat?.name}
+          </p>
+        </div>
+      </label>
+    </div>
   );
 };
 

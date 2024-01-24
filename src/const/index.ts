@@ -1,15 +1,19 @@
 const routes = [
   {
-    href: "/products",
-    label: "Products",
+    href: "/home",
+    label: "Home",
   },
   {
-    href: "/categories",
-    label: "Categories",
+    href: "/restaurants",
+    label: "Restaurants",
   },
   {
-    href: "/sell",
-    label: "Sell",
+    href: "/cart",
+    label: "Shopping Bag",
+  },
+  {
+    href: "/profile",
+    label: "Profile",
   },
 ]
 

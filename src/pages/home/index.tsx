@@ -48,4 +48,3 @@ Home.getLayout = (page) => {
 }
 
 export default Home
-

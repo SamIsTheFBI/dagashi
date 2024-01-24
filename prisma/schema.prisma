@@ -71,3 +71,36 @@ model VerificationToken {
 
     @@unique([identifier, token])
 }
+
+model Category {
+  id        Int      @id @default(autoincrement())
+  name      String
+  imageUrl  String
+  foods     Food[]
+}
+
+model Restaurant {
+  id        Int      @id @default(autoincrement())
+  name      String
+  foods     Food[]
+}
+
+model Food {
+  id            Int        @id @default(autoincrement())
+  name          String
+  isVeg         Boolean    @default(true)
+  price         Float
+  category      Category   @relation(fields: [categoryId], references: [id])
+  categoryId    Int
+  restaurant    Restaurant @relation(fields: [restaurantId], references: [id])
+  restaurantId  Int
+  servings      Serving[]
+}
+
+model Serving {
+  id          Int      @id @default(autoincrement())
+  size        String
+  price       Float
+  food        Food     @relation(fields: [foodId], references: [id])
+  foodId      Int
+}
