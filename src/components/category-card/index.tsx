@@ -18,7 +18,7 @@ const CategoryCard: React.FC<CategoryCard> = ({ cat }) => {
       <input type="radio" id={cat?.name} name="hosting" value={cat?.name} className="hidden peer" onChange={(e) => setCategoryName(e.target.value)} required />
       <label
         htmlFor={cat?.name}
-        className="inline-flex items-center justify-between w-full p-2 text-primary bg-primary-foreground border border-secondary rounded-lg cursor-pointer dark:hover:text-secondary dark:border-secondary dark:peer-checked:text-secondary peer-checked:border-primary peer-checked:border-2 peer-checked:font-bold hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
+        className="inline-flex items-center justify-between w-full p-2 text-foreground bg-card-background border border-secondary rounded-lg cursor-pointer dark:border-secondary hover:bg-secondary dark:peer-checked:text-foreground peer-checked:border-primary peer-checked:border-2 peer-checked:font-bold">
         <div className="flex flex-col justify-between items-center gap-2 p-3 rounded-lg">
           <div className="size-16 rounded-lg overflow-hidden p-2">
             {cat?.imageUrl
