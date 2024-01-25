@@ -19,7 +19,7 @@ export default function Header() {
       <Container>
         <div className="relative px-3 sm:px-6 lg:px-8 flex h-11 items-center justify-between w-full">
           <div className="flex items-center">
-            <Link href="/" className="inline-flex items-center gap-3">
+            <Link href="/home" className="inline-flex items-center gap-3">
               <IoRestaurant />
               <h1 className="text-xl font-bold">
                 Dagashi
