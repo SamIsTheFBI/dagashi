@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -13,6 +15,11 @@
 
 .main-height {
   min-height: calc(100dvh - var(--header-height) - var(--footer-height));
+}
+
+.text-outline {
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #E11D48;
 }
  
 @layer base {

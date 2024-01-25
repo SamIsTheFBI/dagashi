@@ -19,6 +19,9 @@ const config = {
       },
     },
     extend: {
+      backgroundImage: {
+        'landing-page': "url('https://images.pexels.com/photos/941869/pexels-photo-941869.jpeg?cs=srgb&dl=pexels-chan-walrus-941869.jpg&fm=jpg&w=1920&h=1080')",
+      },
       fontFamily: {
         sans: ["var(--font-sans)", ...fontFamily.sans],
       },

@@ -1,6 +1,8 @@
 {
-  "name": "starter",
+  "name": "dagashi",
   "version": "0.1.0",
+  "description": "A food delivery web app",
+  "author": "Shivam Shekhar Soy <shivamshekharsoy@gmail.com> (SamIsTheFBI)",
   "private": true,
   "type": "module",
   "scripts": {

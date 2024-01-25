@@ -5,6 +5,7 @@ import ProfileButton from "./profile-button"
 import Footer from "./footer"
 import SignInCard from "./signin-card"
 import MobileNavbar from "./mobile-navbar"
+import BlankLayout from "./blank-layout"
 
 export {
   RootLayout,
@@ -14,4 +15,5 @@ export {
   Footer,
   SignInCard,
   MobileNavbar,
+  BlankLayout,
 }
