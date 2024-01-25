@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { Container, RootLayout } from "~/components";
+import { Container, FoodCard, RootLayout } from "~/components";
 import CategoryList from "~/components/category-list";
 import { Input } from "~/components/ui/input";
 import { Skeleton } from "~/components/ui/skeleton";
@@ -9,6 +9,7 @@ import { api } from "~/utils/api";
 
 const Home: NextPageWithLayout = () => {
   const categories = api.category.listAll.useQuery()
+  const foodList = api.food.getFoodItems.useQuery()
   const { categoryName } = useCategoryStore()
 
   return (
@@ -26,22 +27,34 @@ const Home: NextPageWithLayout = () => {
           {categories.data ?
             <CategoryList categories={categories.data} />
             :
-            <div className="flex gap-x-4 px-4 sm:px-6 lg:px-8">
-              {Array(15)
-                .fill(0)
-                .map((_, index) => (
-                  <Skeleton className="h-28 py-1 w-20 rounded-lg" key={index} />
-                ))}
+            <div className="px-4 sm:px-6 lg:px-8">
+              <div className="text-xl font-bold py-3">Categories</div>
+              <div className="flex w-full gap-x-4">
+                {Array(4)
+                  .fill(0)
+                  .map((_, index) => (
+                    <Skeleton className="h-28 py-1 w-20 rounded-lg" key={index} />
+                  ))}
+              </div>
             </div>
           }
           <div className="px-4 sm:px-6 lg:px-8 text-xl font-bold">Explore {categoryName}</div>
-          <div className="flex flex-col gap-y-4 px-4 sm:px-6 lg:px-8">
-            {Array(15)
-              .fill(0)
-              .map((_, index) => (
-                <Skeleton className="h-44 w-full rounded-lg" key={index} />
+          {foodList.data ?
+            <div className="flex max-sm:flex-col flex-wrap gap-y-4 gap-x-4 px-4 sm:px-6 lg:px-8">
+              {foodList.data.map((food) => (
+                <FoodCard
+                  food={food}
+                  key={food.id} />
               ))}
-          </div>
+            </div>
+            :
+            <div className="flex max-sm:flex-col flex-wrap gap-y-4 gap-x-4 px-4 sm:px-6 lg:px-8">
+              {Array(15)
+                .fill(0)
+                .map((_, index) => (
+                  <Skeleton className="h-44 w-full rounded-lg" key={index} />
+                ))}
+            </div>}
         </div>
       </Container>
     </>

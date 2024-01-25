@@ -27,7 +27,7 @@ const Index: NextPageWithLayout = () => {
               <div className="m-auto text-white">
                 <div className="z-50 text-6xl font-extrabold">Satisfy your cravings with <div className="md:text-outline border-[5px] border-white p-2 inline-block">Dagashi!</div></div>
                 <p className="py-4 text-xl font-medium">Find the best restaurants & cafés in India</p>
-                <Button className="font-bold inline-flex" onClick={() => router.push('/home')}>🍽️ Let's Go!</Button>
+                <Button className="font-bold inline-flex" onClick={() => router.push('/home')}>🍽️ Let&apos;s Go!</Button>
               </div>
             </div>
           </Container>

@@ -1,10 +1,14 @@
+import { type Restaurant } from "@prisma/client";
 import Head from "next/head";
+import Link from "next/link";
 import { Container, RootLayout } from "~/components";
 import { Input } from "~/components/ui/input";
 import { Skeleton } from "~/components/ui/skeleton";
 import { type NextPageWithLayout } from "~/types";
+import { api } from "~/utils/api";
 
 const Restaurants: NextPageWithLayout = () => {
+  const restaurants = api.restaurant.listAll.useQuery()
 
   return (
     <>
@@ -18,15 +22,30 @@ const Restaurants: NextPageWithLayout = () => {
           <div className="p-4 sm:p-6 lg:p-8 rounded-lg overflow-hidden">
             <Input placeholder="Search for restaurants..." />
           </div>
-          <div className="px-4 sm:px-6 lg:px-8 text-xl font-bold">Available Restaurants</div>
-          <div className="flex flex-col gap-y-4 px-4 sm:px-6 lg:px-8">
-            {Array(15)
-              .fill(0)
-              .map((_, index) => (
-                <Skeleton className="h-24 w-full rounded-lg" key={index} />
-              ))}
-          </div>
+          <div className="px-4 sm:px-6 lg:px-8 text-xl font-bold">Order Online From These Restaurants</div>
+          {restaurants.data ?
+            <div className="flex flex-col gap-y-4 px-4 sm:px-6 lg:px-8">
+              {
+                restaurants.data?.map((rest: Restaurant) => (
+                  <Link
+                    key={rest.id}
+                    href={`/restaurants/${rest.id}`}
+                    className="w-full max-sm:max-w-sm max-w-[22rem] bg-card flex p-3 bg-card-background border-2 border-secondary rounded-lg cursor-pointer dark:border-secondary hover:bg-secondary">
+                    {rest.name}
+                  </Link>
+                ))
+              }
+            </div>
+            :
+            <div className="flex flex-col gap-y-4 px-4 sm:px-6 lg:px-8">
+              {Array(15)
+                .fill(0)
+                .map((_, index) => (
+                  <Skeleton className="h-20 max-sm:max-w-sm max-w-[22rem] rounded-lg" key={index} />
+                ))}
+            </div>}
         </div>
+
       </Container>
     </>
   );

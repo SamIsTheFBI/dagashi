@@ -6,6 +6,7 @@ import Footer from "./footer"
 import SignInCard from "./signin-card"
 import MobileNavbar from "./mobile-navbar"
 import BlankLayout from "./blank-layout"
+import FoodCard from "./food-card"
 
 export {
   RootLayout,
@@ -16,4 +17,5 @@ export {
   SignInCard,
   MobileNavbar,
   BlankLayout,
+  FoodCard,
 }

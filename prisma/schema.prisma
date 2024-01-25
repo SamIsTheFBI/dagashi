@@ -82,6 +82,8 @@ model Category {
 model Restaurant {
   id        Int      @id @default(autoincrement())
   name      String
+  address   String?
+  tagline   String?
   foods     Food[]
 }
 
@@ -95,6 +97,7 @@ model Food {
   restaurant    Restaurant @relation(fields: [restaurantId], references: [id])
   restaurantId  Int
   servings      Serving[]
+  imageUrl      String?
 }
 
 model Serving {

@@ -10,7 +10,7 @@ export default function MobileNavbar() {
       <div className="grid h-full max-w-lg grid-cols-4 mx-auto">
         {routes.map((route: NavRoute) => (
           <Link key={route.label} href={route.href} type="button" className="inline-flex flex-col items-center justify-center px-2 hover:bg-secondary dark:hover:bg-gray-800 group">
-            <span className={router.pathname === route.href ? "text-primary" : "text-foreground"}>
+            <span className={router.pathname.includes(route.href) ? "text-primary" : "text-foreground"}>
               <route.icon size={24} />
             </span>
           </Link>
