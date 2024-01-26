@@ -6,6 +6,7 @@ interface FoodCard {
     id: number,
     name: string,
     price: number,
+    isVeg: boolean,
     imageUrl?: string | null,
     restaurant?: {
       id: number,

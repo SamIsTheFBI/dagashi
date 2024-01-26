@@ -39,7 +39,7 @@ const Home: NextPageWithLayout = () => {
             </div>
           }
           <div className="px-4 sm:px-6 lg:px-8 text-xl font-bold">Explore {categoryName}</div>
-          {foodList.data ?
+          {foodList?.data ?
             <div className="flex max-sm:flex-col flex-wrap gap-y-4 gap-x-4 px-4 sm:px-6 lg:px-8">
               {foodList.data.map((food) => (
                 <FoodCard

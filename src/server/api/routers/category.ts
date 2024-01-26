@@ -8,6 +8,5 @@ export const catRouter = createTRPCRouter({
     .query(({ ctx }) => {
       return ctx.db.category.findMany();
     }),
-
 });
 

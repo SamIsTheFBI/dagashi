@@ -14,14 +14,19 @@ export const foodRouter = createTRPCRouter({
         },
       })
 
-      return foods.map((food) => ({
-        id: food.id,
-        name: food.name,
-        price: food.price,
-        restaurant: food.restaurant,
-        imageUrl: food.imageUrl,
-        isVeg: food.isVeg,
-      }))
+      return foods
+    }),
+
+  getFoodByRestaurantId: publicProcedure
+    .input(z.object({ id: z.number() }))
+    .query(async ({ ctx, input }) => {
+      const foods = await ctx.db.food.findMany({
+        where: {
+          restaurantId: input.id,
+        }
+      })
+
+      return foods
     }),
 
   listByCategoryName: publicProcedure

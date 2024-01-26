@@ -11,8 +11,10 @@ const RestaurantPage: NextPageWithLayout = () => {
   const some = router.query
   // eslint-disable-next-line @typescript-eslint/no-inferrable-types
   const id: number = Number(some?.id)
-  const foodList = api.restaurant.listFood.useQuery({ id: id })
+  // const foodList = api.restaurant.listFood.useQuery({ id: id })
   const restaurantDetails = api.restaurant.getRestaurantDetailsById.useQuery({ id: id })
+  const newFoodList = api.food.getFoodByRestaurantId.useQuery({ id: id })
+  console.log(newFoodList.data)
 
   return (
     <>
@@ -27,7 +29,7 @@ const RestaurantPage: NextPageWithLayout = () => {
             <div className="px-4 sm:px-6 lg:px-8 text-xl">
               <div className="font-bold pb-4">
                 <Button variant="outline" className="mr-5" onClick={() => history.back()}><FaArrowLeft /></Button>
-                {foodList.data?.name}
+                {restaurantDetails.data?.name}
               </div>
               <span>{restaurantDetails.data?.tagline}</span>
               <p className="mb-5">
@@ -35,7 +37,7 @@ const RestaurantPage: NextPageWithLayout = () => {
               </p>
             </div>
             <div className="flex max-sm:flex-col flex-wrap gap-y-4 gap-x-4 px-4 sm:px-6 lg:px-8">
-              {foodList.data?.foods.map((food) => (
+              {newFoodList.data?.map((food) => (
                 <FoodCard food={food} key={food.id} />
               ))}
             </div>

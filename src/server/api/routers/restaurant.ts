@@ -6,22 +6,21 @@ import {
 
 export const restRouter = createTRPCRouter({
   listAll: publicProcedure
-    .query(({ ctx }) => {
-      return ctx.db.restaurant.findMany();
+    .query(async ({ ctx }) => {
+      const res = await ctx.db.restaurant.findMany();
+      return res
     }),
 
   getRestaurantDetailsById: publicProcedure
     .input(z.object({ id: z.number() }))
-    .query(({ ctx, input }) => {
-      return ctx.db.restaurant.findFirst({
+    .query(async ({ ctx, input }) => {
+      const res = await ctx.db.restaurant.findFirst({
         where: {
           id: input.id,
         },
-        select: {
-          address: true,
-          tagline: true,
-        }
       })
+
+      return res
     }),
 
   listFood: publicProcedure
@@ -31,10 +30,9 @@ export const restRouter = createTRPCRouter({
         where: {
           id: input.id,
         },
-        select: {
+        include: {
           foods: true,
-          name: true,
-        }
+        },
       })
     }),
 });
