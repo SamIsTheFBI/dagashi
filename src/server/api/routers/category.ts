@@ -5,8 +5,9 @@ import {
 
 export const catRouter = createTRPCRouter({
   listAll: publicProcedure
-    .query(({ ctx }) => {
-      return ctx.db.category.findMany();
+    .query(async ({ ctx }) => {
+      const res = await ctx.db.category.findMany();
+      return res
     }),
 });
 
