@@ -17,7 +17,7 @@
 - [How to deploy](#how-to-deploy)
 
 ## Overview
-[WIP]
+Check the live deployment [here](https://dagashi.vercel.app/).
 
 ## Dependencies
 This project is built with Nextjs Pages Router bootstrapped with [Create T3 App](https://create.t3.gg/). The beautiful frontend uses ShadcnUI + Tailwind and backend is held together by Prisma + Supabase & tRPC. Further dependencies can be checked from `package.json`.
@@ -27,6 +27,8 @@ This project is built with Nextjs Pages Router bootstrapped with [Create T3 App]
 > [!IMPORTANT]
 > This project is still a WIP. Deployment procedure may change in upcoming commits.
 > Even the packages!
+> <br />Supabase integration in `supabase` branch.
+> `main` branch uses sqlite for database. 
 
 - **Clone the repository**: First off, clone this repository by downloading the zip file from the above <kbd>Code</kbd> button. Or better yet, if you have Git installed in your system, run the following command in your terminal:
    
@@ -44,7 +46,7 @@ This project is built with Nextjs Pages Router bootstrapped with [Create T3 App]
     ```env
     # Prisma
     # https://www.prisma.io/docs/reference/database-reference/connection-urls#env
-    DATABASE_URL="file:./db.sqlite"
+    DATABASE_URL="postgresql://[USER]:[PASSWORD]@[HOST]:[PORT]/[DATABASE]?schema=[SCHEMA]&connection_limit=5"
     
     # Clerk Auth Provider
     NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=

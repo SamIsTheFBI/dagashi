@@ -21,6 +21,10 @@
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: #E11D48;
 }
+
+.cl-internal-b3fm6y {
+  display: none;
+}
  
 @layer base {
   :root {
@@ -75,5 +79,13 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+
+  .cl-card, .clerk-container {
+    @apply bg-card
+  }
+
+  .cl-headerTitle, .cl-header {
+    @apply text-foreground
   }
 }
