@@ -28,7 +28,7 @@ const Home: NextPageWithLayout = () => {
             <CategoryList categories={categories.data} />
             :
             <div className="px-4 sm:px-6 lg:px-8">
-              <div className="text-xl font-bold py-3">Categories</div>
+              <div className="text-xl font-bold py-3">Categories </div>
               <div className="flex w-full gap-x-4">
                 {Array(4)
                   .fill(0)
